@@ -43,6 +43,8 @@ const Weather = () => {
           <FaSearch />
         </button>
       </div>
+
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };
