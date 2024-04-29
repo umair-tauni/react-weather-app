@@ -69,11 +69,10 @@ const Weather = () => {
             <div className="location">
               <MdLocationOn />
             </div>
+            <p>
+              {weather.name}, <span>{weather.sys.country}</span>
+            </p>
           </div>
-
-          <p>
-            {weather.name}, <span>{weather.sys.country}</span>
-          </p>
 
           <div className="weather-stats">
             <div className="wind">
