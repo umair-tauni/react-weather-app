@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Weather.css";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaWind } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
 
 const Weather = () => {
   const [city, setCity] = useState("");
@@ -8,7 +9,7 @@ const Weather = () => {
   const [error, setError] = useState("");
 
   const API_KEY = "a790199dcc731c702e9b466591705be4";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
 
   function handleOnChange(event) {
     setCity(event.target.value);
@@ -54,6 +55,35 @@ const Weather = () => {
               alt="weather-icon"
             />
             <h3 className="desc">{weather.weather[0].description}</h3>
+          </div>
+
+          <div className="weather-temp">
+            <h2>
+              {weather.main.temp}
+              <span>&deg;C</span>
+            </h2>
+          </div>
+
+          <div className="weather-city">
+            <div className="location">
+              <MdLocationOn />
+            </div>
+          </div>
+
+          <p>
+            {weather.name}, <span>{weather.sys.country}</span>
+          </p>
+
+          <div className="weather-stats">
+            <div className="wind">
+              <div className="wind-icon">
+                <FaWind />
+                <h3 className="wind-speed">
+                  {weather.wind.speed}
+                  <span>Km/h</span>
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
       )}
