@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Weather.css";
 import { FaSearch, FaWind } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
+import { WiHumidity } from "react-icons/wi";
 
 const Weather = () => {
   const [city, setCity] = useState("");
@@ -82,6 +83,18 @@ const Weather = () => {
                   {weather.wind.speed}
                   <span>Km/h</span>
                 </h3>
+                <h3 className="wind-heading">Wind Speed</h3>
+              </div>
+            </div>
+
+            <div className="humidity">
+              <div className="humdity-icon">
+                <WiHumidity />
+                <h3 className="humidity-percent">
+                  {weather.main.humidity}
+                  <span>%</span>
+                </h3>
+                <h3 className="humidity-heading">Humidity</h3>
               </div>
             </div>
           </div>
