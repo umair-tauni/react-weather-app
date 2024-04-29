@@ -60,7 +60,7 @@ const Weather = () => {
 
           <div className="weather-temp">
             <h2>
-              {weather.main.temp}
+              {Math.round(weather.main.temp)}
               <span>&deg;C</span>
             </h2>
           </div>
@@ -78,23 +78,23 @@ const Weather = () => {
             <div className="wind">
               <div className="wind-icon">
                 <FaWind />
-                <h3 className="wind-speed">
-                  {weather.wind.speed}
-                  <span>Km/h</span>
-                </h3>
-                <h3 className="wind-heading">Wind Speed</h3>
               </div>
+              <h3 className="wind-speed">
+                {weather.wind.speed}
+                <span>Km/h</span>
+              </h3>
+              <h3 className="wind-heading">Wind Speed</h3>
             </div>
 
             <div className="humidity">
-              <div className="humdity-icon">
+              <div className="humidity-icon">
                 <WiHumidity />
-                <h3 className="humidity-percent">
-                  {weather.main.humidity}
-                  <span>%</span>
-                </h3>
-                <h3 className="humidity-heading">Humidity</h3>
               </div>
+              <h3 className="humidity-percent">
+                {weather.main.humidity}
+                <span>%</span>
+              </h3>
+              <h3 className="humidity-heading">Humidity</h3>
             </div>
           </div>
         </div>
