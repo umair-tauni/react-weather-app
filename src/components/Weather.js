@@ -45,6 +45,18 @@ const Weather = () => {
       </div>
 
       {error && <p className="error-message">{error}</p>}
+
+      {weather && weather.weather && (
+        <div className="content">
+          <div className="weather-image">
+            <img
+              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+              alt="weather-icon"
+            />
+            <h3 className="desc">{weather.weather[0].description}</h3>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
