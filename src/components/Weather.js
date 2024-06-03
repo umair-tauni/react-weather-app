@@ -9,27 +9,34 @@ const Weather = () => {
   const [weather, setWeather] = useState();
   const [error, setError] = useState("");
 
-  const API_KEY = "a790199dcc731c702e9b466591705be4";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+  // Access environment variables
+  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  console.log("API Key:", API_KEY);
+  console.log("API URL:", API_URL);
 
   function handleOnChange(event) {
     setCity(event.target.value);
-    // console.log(event.target.value);
   }
 
   async function fetchData() {
+    const url = `${API_URL}weather?q=${city}&units=metric&appid=${API_KEY}`;
+    console.log("Request URL:", url);
     try {
       let res = await fetch(url);
       let data = await res.json();
 
       if (res.ok) {
         setWeather(data);
-        // console.log(data);
         setError("");
       } else {
         setError("No data found. Please enter a valid city name.");
       }
-    } catch (error) {}
+    } catch (error) {
+      setError("An error occurred while fetching the data.");
+      console.error("Fetch error:", error);
+    }
   }
 
   return (
